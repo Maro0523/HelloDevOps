@@ -19,3 +19,12 @@ jobs:
         run: dotnet build --no-restore
       - name: Run
         run: dotnet run 
+        
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+
+      - name: Create Issue on Failure
+        if: failure()
+        uses: JasonEtco/create-an-issue@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
