@@ -25,6 +25,6 @@ jobs:
 
       - name: Create Issue on Failure
         if: failure()
-        uses: JasonEtco/create-an-issue@v5.1.0
+        uses: JasonEtco/create-an-issue@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
