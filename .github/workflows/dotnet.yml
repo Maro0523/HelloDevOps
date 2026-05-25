@@ -28,7 +28,10 @@ jobs:
         run: dotnet build --no-restore
         
       - name: Test
-        run: dotnet test TestProject2/TestProject2.csproj --report-trx --report-trx-filename test-results.trx
+        env:
+          TESTINGPLATFORM_REPORT_TRX: "true"
+          TESTINGPLATFORM_REPORT_TRX_FILENAME: "test-results.trx"
+        run: dotnet test TestProject2/TestProject2.csproj --verbosity normal
 
       - name: Test Report
         uses: dorny/test-reporter@v1
