@@ -38,7 +38,7 @@ jobs:
         if: success() || failure()
         with:
           name: .NET Tests Report
-          path: '**/TestResults/test-results.trx'
+          path: '**/TestResults/*.trx'  
           reporter: dotnet-trx
 
       - name: Publish App
