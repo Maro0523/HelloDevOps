@@ -28,14 +28,14 @@ jobs:
         run: dotnet build --no-restore
         
       - name: Test
-        run: dotnet test TestProject2/TestProject2.csproj --logger "trx;LogFileName=test-results.trx" --results-directory TestProject2/ --verbosity normal
+        run: dotnet test TestProject2/TestProject2.csproj --logger "trx;LogFileName=test-results.trx" --verbosity normal
 
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
           name: .NET Tests Report
-          path: '**/test-results.trx'
+          path: '**/TestResults/test-results.trx'
           reporter: dotnet-trx
 
       - name: Publish App
